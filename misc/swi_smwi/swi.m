@@ -11,8 +11,8 @@
 %
 % Output
 % --------------
-% pSWI          : positive phase enahcned SWI
-% nSWI          : negative phase enahcned SWI
+% pSWI          : positive phase enhanced SWI
+% nSWI          : negative phase enhanced SWI
 % swi_phase     : high-pass filtered phase
 %
 % Description:
@@ -20,7 +20,7 @@
 % Kwok-shing Chan @ DCCN
 % k.chan@donders.ru.nl
 % Date created: 14 April 2019
-% Date last modified:
+% Date modified: 14  September 2021 (v1.0)
 %
 %
 function [pSWI,nSWI,swi_phase] = swi(magn,phase,filterSize,thres,m,method)

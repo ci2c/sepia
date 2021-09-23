@@ -86,17 +86,19 @@ outputNiftiTemplate = inputMagnNifti;
 %% SWI
 disp('Computing SWI...');
 
-[pSWI,nSWI,swi_phase] = swi(magn,phase,filterSize,thres,m,method);
+[swi_phase,pSWI,nSWI,pswi_mIP,nswi_mIP] = Wrapper_SWISMWI_SWI2DHamming(phase,magn,algorParam);
 
-% minimum intensity projection
-if ismIP
-    pswi_mIP = zeros(size(swi_phase));
-    nswi_mIP = zeros(size(swi_phase));
-    for kz = 1:size(swi_phase,3) - slice_mIP
-        pswi_mIP(:,:,kz,:) = min(pSWI(:,:,kz:kz+slice_mIP-1,:),[],3);
-        nswi_mIP(:,:,kz,:) = min(nSWI(:,:,kz:kz+slice_mIP-1,:),[],3);
-    end
-end
+% [pSWI,nSWI,swi_phase] = swi(magn,phase,filterSize,thres,m,method);
+% 
+% % minimum intensity projection
+% if ismIP
+%     pswi_mIP = zeros(size(swi_phase));
+%     nswi_mIP = zeros(size(swi_phase));
+%     for kz = 1:size(swi_phase,3) - slice_mIP
+%         pswi_mIP(:,:,kz,:) = min(pSWI(:,:,kz:kz+slice_mIP-1,:),[],3);
+%         nswi_mIP(:,:,kz,:) = min(nSWI(:,:,kz:kz+slice_mIP-1,:),[],3);
+%     end
+% end
 
 %% save nii
 disp('Saving SWI results...');
